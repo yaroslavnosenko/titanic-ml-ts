@@ -5,7 +5,8 @@
   "main": "server/index.ts",
   "scripts": {
     "start:prod": "ts-node server",
-    "start": "ts-node-dev server"
+    "start": "ts-node-dev server",
+    "analyze": "ts-node analysis"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,10 @@
   },
   "homepage": "https://github.com/yaroslavnosenko/titanic-ml-ts#readme",
   "dependencies": {
+    "csv-parse": "^4.15.4",
     "express": "^4.17.1",
+    "node-mind": "^1.0.1",
+    "simple-statistics": "^7.7.0",
     "ts-node": "^9.1.1"
   },
   "devDependencies": {
