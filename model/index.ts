@@ -19,5 +19,4 @@
 // console.log(pipeline.getVectors()[0])
 // // console.log(pipeline.getConfigs())
 
-import { learn } from './learn'
-learn()
+export * from './learn'
