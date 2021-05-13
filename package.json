@@ -8,8 +8,8 @@
     "start": "ts-node-dev server",
     "analyze": "ts-node analysis",
     "test:server": "jest server/tests",
-    "test:model": "jest model/tests",
-    "test:utils": "jest utils/tests"
+    "test:utils": "jest utils/tests",
+    "test": "npm run test:utils && npm run test:server"
   },
   "repository": {
     "type": "git",

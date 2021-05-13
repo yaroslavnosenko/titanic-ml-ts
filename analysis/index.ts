@@ -48,6 +48,8 @@ data = data.map(row => {
 
 // Transformation
 
+// Label encoding
+
 const strCols = ['Sex', 'Embarked']
 const strConf = []
 strCols.forEach(colName => {
@@ -59,6 +61,8 @@ strCols.forEach(colName => {
 
 console.log('\nStrToIndex Config:')
 console.table(strConf)
+
+// Numbers normalization
 
 const numCols = ['Pclass', 'SibSp', 'Parch', 'Fare', 'Sex', 'Embarked']
 const scalerConf = []
@@ -81,14 +85,10 @@ const preparedData = data.map(row => ({
 }))
 const [train, test] = split(preparedData, 0.6, true)
 
+// Model
+
 const mind = new Mind({ activator: 'sigmoid' }).learn(train)
-console.table([
-  {
-    real: test[0].output[0],
-    predicted: Math.round(mind.predict(test[0].input)),
-  },
-  {
-    real: test[90].output[0],
-    predicted: Math.round(mind.predict(test[90].input)),
-  },
-])
+const results = test.map(row => row.output[0] === Math.round(mind.predict(row.input)))
+const accuracy = results.filter(row => row).length / results.length
+console.log('\n Model:')
+console.table({ accuracy })
