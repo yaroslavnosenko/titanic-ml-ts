@@ -91,4 +91,4 @@ const mind = new Mind({ activator: 'sigmoid' }).learn(train)
 const results = test.map(row => row.output[0] === Math.round(mind.predict(row.input)))
 const accuracy = results.filter(row => row).length / results.length
 console.log('\n Model:')
-console.table({ accuracy })
+console.table({ Accuracy: accuracy })
