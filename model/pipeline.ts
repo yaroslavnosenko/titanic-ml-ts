@@ -96,9 +96,20 @@ export class Pipeline {
   }
 
   public getVectors(): any[] {
-    return this.data.map(row => ({
-      input: [row['Pclass'], row['Sex'], row['SibSp'], row['Parch'], row['Fare'], row['Embarked']],
-      output: [row['Survived']],
-    }))
+    return this.data.map(row => {
+      const newRow: any = {}
+      newRow.input = [
+        row['Pclass'],
+        row['Sex'],
+        row['SibSp'],
+        row['Parch'],
+        row['Fare'],
+        row['Embarked'],
+      ]
+      if (row['Survived'] != undefined) {
+        newRow.output = [row['Survived']]
+      }
+      return newRow
+    })
   }
 }
