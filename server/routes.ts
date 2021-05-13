@@ -1,8 +1,27 @@
-import { Router, Response } from 'express'
+import { Router, Response, Request } from 'express'
+import { learn, predict } from '../model'
+import * as fs from 'fs'
 
 const routes: Router = Router()
 
-routes.get('/train', (_, res: Response) => res.sendStatus(200))
-routes.get('/predict', (_, res: Response) => res.sendStatus(200))
+routes.get('/learn', (_, res: Response) => {
+  const accuracy = learn()
+  return res.json({ accuracy })
+})
+
+routes.post('/predict', (req: Request, res: Response) => {
+  const data = req.body
+  const survived = predict(data)
+  if (survived === undefined) {
+    return res.sendStatus(404)
+  }
+  return res.json({ survived: survived > 0 })
+})
+
+routes.get('/reset', (_, res: Response) => {
+  fs.unlinkSync('./model/temp/pipe.json')
+  fs.unlinkSync('./model/temp/model.json')
+  res.sendStatus(200)
+})
 
 export { routes }
