@@ -6,7 +6,8 @@
   "scripts": {
     "start:prod": "ts-node server",
     "start": "ts-node-dev server",
-    "analyze": "ts-node analysis"
+    "analyze": "ts-node analysis",
+    "test": "ts-node model"
   },
   "repository": {
     "type": "git",
