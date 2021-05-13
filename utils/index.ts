@@ -3,11 +3,11 @@ import { min, max, shuffle } from 'simple-statistics'
 export const getUnique = (ds: any[], colName: string) =>
   Array.from(new Set(ds.map(row => row[colName])))
 
-export const getMode = (arr: any[]) => {
+export const getMode = (arr: any[]): any => {
   return arr.sort((a, b) => arr.filter(v => v === a).length - arr.filter(v => v === b).length).pop()
 }
 
-export const minMax = (arr: number[], _min?: number, _max?: number) => {
+export const minMax = (arr: number[], _min?: number, _max?: number): [number[], number, number] => {
   if (_min === undefined && _max === undefined) {
     _min = min(arr)
     _max = max(arr)

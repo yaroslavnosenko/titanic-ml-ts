@@ -7,7 +7,9 @@
     "start:prod": "ts-node server",
     "start": "ts-node-dev server",
     "analyze": "ts-node analysis",
-    "test": "jest --detectOpenHandles"
+    "test:server": "jest server/tests",
+    "test:model": "jest model/tests",
+    "test:utils": "jest utils/tests"
   },
   "repository": {
     "type": "git",
