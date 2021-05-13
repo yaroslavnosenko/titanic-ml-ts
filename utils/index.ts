@@ -1,15 +1,10 @@
 import { min, max, shuffle } from 'simple-statistics'
 
 export const getUnique = (ds: any[], colName: string) =>
-  Array.from(new Set(ds.map((row) => row[colName])))
+  Array.from(new Set(ds.map(row => row[colName])))
 
 export const getMode = (arr: any[]) => {
-  return arr
-    .sort(
-      (a, b) =>
-        arr.filter((v) => v === a).length - arr.filter((v) => v === b).length
-    )
-    .pop()
+  return arr.sort((a, b) => arr.filter(v => v === a).length - arr.filter(v => v === b).length).pop()
 }
 
 export const minMax = (arr: number[], _min?: number, _max?: number) => {
@@ -17,8 +12,11 @@ export const minMax = (arr: number[], _min?: number, _max?: number) => {
     _min = min(arr)
     _max = max(arr)
   }
-  const scaled = arr.map((elem) => (elem - _min) / (_max - _min))
-  return [scaled, _min, _max]
+  const scaledArr = arr.map(elem => {
+    const scaled = (elem - _min) / (_max - _min)
+    return isNaN(scaled) ? 0 : scaled
+  })
+  return [scaledArr, _min, _max]
 }
 
 // {'str': index ...}
@@ -28,7 +26,7 @@ export const strToIndex = (arr: string[], config?: any) => {
     config = {}
     unique.forEach((str, index) => (config[str] = index))
   }
-  const mapped = arr.map((str) => config[str])
+  const mapped = arr.map(str => config[str])
   return [mapped, config]
 }
 
