@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/yaroslavnosenko/titanic-ml-ts#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "csv-parse": "^4.15.4",
     "express": "^4.17.1",
     "node-mind": "^1.0.1",
@@ -29,6 +30,7 @@
     "ts-node": "^9.1.1"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.10",
     "@types/express": "^4.17.11",
     "@types/jest": "^26.0.23",
     "@types/supertest": "^2.0.11",
