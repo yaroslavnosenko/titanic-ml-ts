@@ -19,9 +19,11 @@ routes.post('/predict', (req: Request, res: Response) => {
 })
 
 routes.get('/reset', (_, res: Response) => {
-  fs.unlinkSync('./model/temp/pipe.json')
-  fs.unlinkSync('./model/temp/model.json')
-  res.sendStatus(200)
+  try {
+    fs.unlinkSync('./model/temp/pipe.json')
+    fs.unlinkSync('./model/temp/model.json')
+  } catch (e) {}
+  return res.sendStatus(200)
 })
 
 export { routes }
